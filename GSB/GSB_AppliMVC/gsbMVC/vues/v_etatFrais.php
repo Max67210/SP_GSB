@@ -13,7 +13,7 @@
          <?php
          foreach ( $lesFraisForfait as $unFraisForfait ) 
 		 {
-			$libelle = $unFraisForfait['libelle'];
+			$libelle = $unFraisForfait['LIBELLE'];
 		?>	
 			<th> <?php echo $libelle?></th>
 		 <?php
@@ -24,7 +24,7 @@
         <?php
           foreach (  $lesFraisForfait as $unFraisForfait  ) 
 		  {
-				$quantite = $unFraisForfait['quantite'];
+				$quantite = $unFraisForfait['QUANTITE'];
 		?>
                 <td class="qteForfait"><?php echo $quantite?> </td>
 		 <?php

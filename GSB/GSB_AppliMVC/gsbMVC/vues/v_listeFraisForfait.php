@@ -7,7 +7,9 @@
           <fieldset>
             <legend>Eléments forfaitisés
             </legend>
-			<?php
+		
+	
+                <?php
 				foreach ($lesFraisForfait as $unFrais)
 				{
 					$idFrais = $unFrais['IDFRAIS'];

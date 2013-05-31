@@ -5,7 +5,7 @@ include("include/fct.inc.php");
 
 /* Modification des paramètres de connexion */
 
-$serveur='oci:dbname=172.16.5.100:1521/xe';
+$serveur='oci:dbname=172.16.5.119:1521/xe';
 //$bdd='dbname=xe';   		
 $user='mexios' ;    		
 $mdp='maxime67' ;	

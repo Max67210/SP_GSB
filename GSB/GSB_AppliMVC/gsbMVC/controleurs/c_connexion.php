@@ -11,8 +11,11 @@ switch($action){
 	case 'valideConnexion':{
 		$login = $_REQUEST['login'];
 		$mdp = $_REQUEST['mdp'];
+                $_SESSION['ancienMdp'] = $mdp;
                 $pdo->RecupererGroupe($login,$mdp);
 		$visiteur = $pdo->getInfosVisiteur($login,$mdp);
+                echo "<div style='padding-left:170px;color:red;font-weight:bold;'>";
+                echo "Bienvenue sur GSB"."</div>";
 		if(!is_array( $visiteur)){
 			ajouterErreur("Login ou mot de passe incorrect");
 			include("vues/v_erreurs.php");

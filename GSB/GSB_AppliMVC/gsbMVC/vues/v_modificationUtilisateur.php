@@ -10,8 +10,8 @@ Modification de l'utilisateur : <?echo $_SESSION['NomUtilisateur']."  ".$_SESSIO
 <label for="login">Login :</label>
 <input type="text" name="Login" value="<? echo $_SESSION['LoginUtilisateur'];?>" /><br/>
 
-<label for="mot de passe">Mot de passe :</label>
-<input type="text" name="Mdp" value="<? echo $_SESSION['PasswordUtilisateur'];?>" /><br/>
+<label for="mot de passe">Mot de passe de 5 caractères :</label>
+<input type="text" name="Mdp" /><br/>
  
 <label for="nom">Nom :</label>
 <input type="text" name="Nom" value="<? echo $_SESSION['NomUtilisateur'];?>" /><br/>
