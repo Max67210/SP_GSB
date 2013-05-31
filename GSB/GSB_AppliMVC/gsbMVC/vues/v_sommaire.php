@@ -9,7 +9,7 @@
       </div>  
         <ul id="menuList">
 			<li >
-                            <h3><strong>UTILISATEUR :</strong></h3><br>
+                            <h3><strong><?php echo $_SESSION['groupe']. " :"; ?></strong></h3><br>
 				<Strong><?php echo $_SESSION['prenom']."  ".$_SESSION['nom']  ?></strong><br/><br/>
 			</li>
                         <br/>
@@ -22,9 +22,13 @@
  	   <li class="smenu">
               <a href="index.php?uc=connexion&action=deconnexion" title="Se déconnecter">Déconnexion</a>
            </li>
+           <?php if($_SESSION['groupe'] == 'administrateur')
+           {
+               ?>
            <li class="smenu">
               <a href="index.php?uc=GererUtilisateurs&action=GererUtilisateurs" title="Gérer les utilisateurs ">Gérer les utilisateurs</a>
            </li>
+           <?php } ?>
          </ul>
         
     </div>

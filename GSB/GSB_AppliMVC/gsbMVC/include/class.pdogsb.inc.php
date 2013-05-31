@@ -54,6 +54,8 @@ class PdoGsb{
  * @return l'id, le nom et le prénom sous la forme d'un tableau associatif 
 */
 	public function getInfosVisiteur($login, $mdp){
+                //$mdp = md5($mdp);
+                //echo $mdp;
 		$req = "select utilisateur.id as id, utilisateur.nom as nom, utilisateur.prenom as prenom from utilisateur
 		where utilisateur.login='$login' and utilisateur.mdp='$mdp'";
 		$rs = PdoGsb::$monPdo->query($req);
@@ -365,6 +367,15 @@ class PdoGsb{
             pdoGsb::$monPdo->exec($req);
             $str = "Modification Réussie";
             return ($str);
+        }
+        
+        public function RecupererGroupe($unLogin,$unMdp)
+        {
+            $req = "Select groupe from Utilisateur where Login='".$unLogin."' and mdp='".$unMdp."'";
+            $Resultat = pdoGsb::$monPdo->query($req);
+            $ligne = $Resultat->fetch();
+            $_SESSION['groupe'] = $ligne['GROUPE'];
+
         }
 }
 ?>
