@@ -16,6 +16,7 @@
                 break;
             }
             case 'AjoutUtilisateur' : {
+                $LesLogins = $pdo->RecuperationLogin();
                 $ID = $_POST['IdUtilisateur'];
                 $Login = $_POST['Login'];
                 $Password = $_POST['Mdp'];
@@ -25,14 +26,20 @@
                 $Code_Postal = $_POST['CodePostal'];
                 $Ville = $_POST['Ville'];
                 $DateEmbauche = $_POST['Date'];
-                $pdo->AjouterUtilisateur($ID,$Login,$Password,$Nom,$Prenom,$Adresse,$Code_Postal,$Ville,$DateEmbauche);
+                $affichage = $pdo->AjouterUtilisateur($ID,$Login,$Password,$Nom,$Prenom,$Adresse,$Code_Postal,$Ville,$DateEmbauche);
+                echo "<div style='color:red;font-weight:bold;'>";
+                echo $affichage."</div>";
+                $LesLogins = $pdo->RecuperationLogin();
                 include("vues/v_gererUtilisateur.php");
                 break;
             }
             case 'SupprimerUtilisateur' : {
                 $LesLogins = $pdo->RecuperationLogin();
                 $Utilisateur = $_POST['choixUtilisateur'];
-                $pdo->SuppressionUtilisateur($Utilisateur);
+                $affichage = $pdo->SuppressionUtilisateur($Utilisateur);
+                echo "<div style='color:red;font-weight:bold;'>";
+                echo $affichage."</div>";
+                $LesLogins = $pdo->RecuperationLogin();
                 include("vues/v_gererUtilisateur.php");
                 break;
             }
@@ -57,7 +64,10 @@
                 $Code_Postal = $_POST['CodePostal'];
                 $Ville = $_POST['Ville'];
                 $DateEmbauche = $_POST['Date'];
-                $pdo->ModifierUtilisateur($ID,$Login,$Password,$Nom,$Prenom,$Adresse,$Code_Postal,$Ville,$DateEmbauche);
+                $affichage = $pdo->ModifierUtilisateur($ID,$Login,$Password,$Nom,$Prenom,$Adresse,$Code_Postal,$Ville,$DateEmbauche);
+                echo "<div style='color:red;font-weight:bold;'>";
+                echo $affichage."</div>";
+                $LesLogins = $pdo->RecuperationLogin();
                 include("vues/v_gererUtilisateur.php");
                 include("vues/v_modificationUtilisateur.php");
                 break;

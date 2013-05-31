@@ -306,14 +306,15 @@ class PdoGsb{
             
             if (!$Resultat->fetch())
             {
-                $req = "insert into Utilisateur Values ('".$ID."','".$Nom."','".$Prenom."','".$Login."','".$Password."','".$Adresse."','".$Code_Postal."','".$Ville."','".$DateEmbauche."','visiteur')";
+                $req = "insert into Utilisateur Values ('".$ID."','".$Nom."','".$Prenom."','".$Login."','".$Password."','".$Adresse."','".$Code_Postal."','".$Ville."',to_date('".$DateEmbauche."','yyyy-mm-dd'),'visiteur')";
                 pdoGsb::$monPdo->exec($req);
-                echo "insertion reussi";
+                $str = "Insertion Réussie";
             }
             else
             {
-                echo "Echec de l'insertion, ID deja pris ou ID de plus de 4 caractères";
+                $str = "Echec de l'insertion, ID deja pris ou ID de plus de 4 caractères";
             }
+            return ($str);
         }
         
         public function RecuperationLogin()
@@ -334,6 +335,8 @@ class PdoGsb{
         {
             $req = "Delete from Utilisateur where Login='".$unUtilisateur."'";
             pdoGsb::$monPdo->exec($req);
+            $str = "Suppression Réussie";
+            return ($str);
         }
         
         
@@ -360,6 +363,8 @@ class PdoGsb{
             $req = "Update Utilisateur set login='".$unLogin."', mdp='".$unMdp."', nom='".$unNom."', prenom ='".$unPrenom.
                     "', adresse ='".$uneAdresse."', cp='".$unCp."', ville='".$uneVille."', dateembauche='".$uneDate."' where ID ='".$unID."'";
             pdoGsb::$monPdo->exec($req);
+            $str = "Modification Réussie";
+            return ($str);
         }
 }
 ?>
