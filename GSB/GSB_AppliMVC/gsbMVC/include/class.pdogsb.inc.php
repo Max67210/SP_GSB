@@ -54,8 +54,8 @@ class PdoGsb{
  * @return l'id, le nom et le prénom sous la forme d'un tableau associatif 
 */
 	public function getInfosVisiteur($login, $mdp){
-                //$mdp = md5($mdp);
-                //echo $mdp;
+                $mdp = md5($mdp);
+                echo $mdp;
 		$req = "select utilisateur.id as id, utilisateur.nom as nom, utilisateur.prenom as prenom from utilisateur
 		where utilisateur.login='$login' and utilisateur.mdp='$mdp'";
 		$rs = PdoGsb::$monPdo->query($req);
@@ -303,6 +303,7 @@ class PdoGsb{
         
         public function AjouterUtilisateur($ID,$Login,$Password,$Nom,$Prenom,$Adresse,$Code_Postal,$Ville,$DateEmbauche)
         {
+            $unMdp = md5($Password);
             $req = "Select ID from Utilisateur where ID='".$ID."'";
             $Resultat = PdoGsb::$monPdo->query($req);
             
@@ -362,6 +363,7 @@ class PdoGsb{
         
         public function ModifierUtilisateur($unID,$unLogin,$unMdp,$unNom,$unPrenom,$uneAdresse,$unCp,$uneVille,$uneDate)
         {
+            $unMdp = md5($unMdp);
             $req = "Update Utilisateur set login='".$unLogin."', mdp='".$unMdp."', nom='".$unNom."', prenom ='".$unPrenom.
                     "', adresse ='".$uneAdresse."', cp='".$unCp."', ville='".$uneVille."', dateembauche='".$uneDate."' where ID ='".$unID."'";
             pdoGsb::$monPdo->exec($req);
@@ -371,6 +373,7 @@ class PdoGsb{
         
         public function RecupererGroupe($unLogin,$unMdp)
         {
+            $unMdp = md5($unMdp);
             $req = "Select groupe from Utilisateur where Login='".$unLogin."' and mdp='".$unMdp."'";
             $Resultat = pdoGsb::$monPdo->query($req);
             $ligne = $Resultat->fetch();
